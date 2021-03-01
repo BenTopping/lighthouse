@@ -9,7 +9,7 @@ on:
       - "README.md"
 
 env:
-  IMAGE_NAME: ${{ github.repository }}/${{ github.event.repository.name }}
+  IMAGE_NAME: "bentopping/${{ github.event.repository.name }}"
 
 jobs:
   build_and_test_job:
@@ -48,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
           tag_name: ${{ env.RELEASE_TAG }}
-          release_name: Release ${{ env.RELEASE_TAG }}
+          release_name: ${{ env.RELEASE_TAG }}
           draft: false
           prerelease: ${{ !(github.ref == 'refs/heads/master') }}
       - name: Build the Docker image
